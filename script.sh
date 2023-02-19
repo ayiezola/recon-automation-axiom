@@ -106,11 +106,11 @@ assetfinder -subs-only $domain | tee $domain/domain_enum/assetfinder.txt
 echo -e ${ORANGE}"\n[+] Amass Enumeration Started:- "
 amass enum -passive -d $domain -o $domain/domain_enum/amass.txt
 echo -e ${CN}"\n[+] Shuffledns Enumeration Started:- "
-shuffledns -d $domain -w /home/op/lists/seclists/Discovery/DNS/deepmagic.com-prefixes-top50000.txt -r ~/tools/resolvers/resolver.txt -o $domain/domain_enum/shuffledns.txt
+shuffledns -d $domain -w /home/op/lists/seclists/Discovery/DNS/deepmagic.com-prefixes-top50000.txt -r ~/lists/resolvers.txt -o $domain/domain_enum/shuffledns.txt
 echo -e ${CP}"\n[+] Collecting All Subdomains Into Single File:- "
 cat $domain/domain_enum/*.txt > $domain/domain_enum/all.txt
 echo -e ${BLUE}"\n[+] Resolving All Subdomains:- "
-shuffledns -d $domain -list $domain/domain_enum/all.txt -o $domain/final_domains/domains.txt -r ~/tools/resolvers/resolver.txt
+shuffledns -d $domain -list $domain/domain_enum/all.txt -o $domain/final_domains/domains.txt -r ~/lists/resolvers.txt
 echo -e ${PINK}"\n[+] Checking Services On Subdomains:- "
 cat $domain/final_domains/domains.txt | httpx -threads 30 -o $domain/final_domains/httpx.txt
 echo -e ${CP}"\n[+] Searching For Subdomain TakeOver:- "

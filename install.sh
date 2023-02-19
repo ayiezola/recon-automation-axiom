@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/zsh
 NC='\033[0m'
 RED='\033[1;38;5;196m'
 GREEN='\033[1;38;5;040m'
@@ -232,7 +232,7 @@ if [[ $? -ne 0 ]]; then
 sleep 1
 echo -e ${GREEN}"[+]Installing Seclists\n"
 command -v "seclists" >/dev/null 2>&1
-if [[ ! -d /usr/share/seclists ]]; then 
+if [[ ! -d /home/op/lists/seclists ]]; then 
         
         sudo apt install seclists -y
         echo -e "....................Seclists Successfully Installed.................\n"    

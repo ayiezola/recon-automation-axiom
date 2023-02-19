@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/zsh
 NC='\033[0m'
 RED='\033[1;38;5;196m'
 GREEN='\033[1;38;5;040m'
@@ -106,7 +106,7 @@ assetfinder -subs-only $domain | tee $domain/domain_enum/assetfinder.txt
 echo -e ${ORANGE}"\n[+] Amass Enumeration Started:- "
 amass enum -passive -d $domain -o $domain/domain_enum/amass.txt
 echo -e ${CN}"\n[+] Shuffledns Enumeration Started:- "
-shuffledns -d $domain -w /usr/share/seclists/Discovery/DNS/deepmagic.com-prefixes-top50000.txt -r ~/tools/resolvers/resolver.txt -o $domain/domain_enum/shuffledns.txt
+shuffledns -d $domain -w /home/op/lists/seclists/Discovery/DNS/deepmagic.com-prefixes-top50000.txt -r ~/tools/resolvers/resolver.txt -o $domain/domain_enum/shuffledns.txt
 echo -e ${CP}"\n[+] Collecting All Subdomains Into Single File:- "
 cat $domain/domain_enum/*.txt > $domain/domain_enum/all.txt
 echo -e ${BLUE}"\n[+] Resolving All Subdomains:- "
